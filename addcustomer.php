@@ -11,11 +11,13 @@ if(isset($_POST['submit'])){
     $results = mysqli_query($conn,$sql);
     
     if($results) {
-        header("Location:customer.php");
+     
+      $last_id = mysqli_insert_id($conn);
+     
+      header("location:c_show.php?id=". $last_id);
       }
    
 }
-
 ?>
 
 
@@ -33,3 +35,10 @@ if(isset($_POST['submit'])){
 
 <button type="submit" name="submit">Add</button></br>
 </form>
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back();
+  }
+</script>

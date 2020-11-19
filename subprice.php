@@ -12,7 +12,7 @@ include'conn.php';
         
         echo $results?"Price Substract Successfully!":"failed to substract failed.";
         
-        $query  ="INSERT INTO `customer_detail`(`customer_id`, `current_price`,`given_status`,`taken_status` ,`detail`,`date`) VALUES ('$id','$new',0,1,'$sdetail','$date')";
+        $query  ="INSERT INTO `customer_detail`(`customer_id`,`gave_amount`,`got_amount` ,`detail`,`date`) VALUES ('$id','','$new','$sdetail','$date')";
         $results = mysqli_query($conn,$query);
    
 

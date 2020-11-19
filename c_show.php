@@ -9,7 +9,7 @@ include ('header.php');
 $id = $_GET['id'];
 $sql = "Select * from customers  WHERE id='" . $_GET['id'] . "'";
 $result = mysqli_query($conn, $sql);
-$query= "SELECT * FROM `customer_detail` WHERE customer_id= $id AND given_status=1";
+$query= "SELECT * FROM `customer_detail` WHERE customer_id= $id";
 $results = mysqli_query($conn, $query);
 
 
@@ -38,14 +38,14 @@ $row = mysqli_fetch_assoc($result);
               <td><?php echo $row['price'] ?></td>
               
               <td>
-                <span  data-toggle="modal" data-target="#myModal<?php echo $count; ?>">Add amount</span>
+                <span  data-toggle="modal" data-target="#myModal<?php echo $count; ?>">You Gave</span>
                 <div class="modal" id="myModal<?php echo $count; ?>">
                   <div class="modal-dialog">
                     <div class="modal-content">
                     
                       <!-- Modal Header -->
                       <div class="modal-header">
-                        <h4 class="modal-title">Add amount</h4>
+                        <h4 class="modal-title">You Gave</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
                       
@@ -56,12 +56,12 @@ $row = mysqli_fetch_assoc($result);
                     
                       <form action="javascript:void(0)" method="Post" >
                       <label>Enter Amount</label>
-                      <input type="number" name="price" id="price" class="add" autocomplete="off">
+                      <input type="number" name="price" id="price" class="add" autocomplete="off" required>
                       <div style="display: none;" class="pop">
                           <label>Enter Details (Item Name, Bill No, Quantity…)</label>
-                          <input type="text" name="detail" id="detail" autocomplete="off"></br>
+                          <input type="text" name="detail" id="detail" autocomplete="off" required></br>
                           <label>When did you give?</label>
-                          <input type="date" name="date" id="date"></br>
+                          <input type="date" name="date" id="date" required></br>
                           <!-- <input accept="image/x-png,image/jpeg,image/png" type="file" autocomplete="off"> -->
                           <input type="submit" id="send" class="open" value="Add" />
                       </div>
@@ -73,13 +73,13 @@ $row = mysqli_fetch_assoc($result);
                 </div>
 
                 
-                <span  data-toggle="modal" data-target="#mModal<?php echo $count; ?>">Take amount</span>
+                <span  data-toggle="modal" data-target="#mModal<?php echo $count; ?>">You Got</span>
                 <div class="modal" id="mModal<?php echo $count; ?>">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h4 class="modal-title">Take amount</h4>
+                      <h4 class="modal-title">You Got</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>  
                     <!-- Modal body -->
@@ -88,12 +88,12 @@ $row = mysqli_fetch_assoc($result);
                       <input type="hidden" id="id" value="<?php echo $row['id'] ?>" >
                       <form action="javascript:void(0)" method="Post" >
                         <label>Enter Amount</label>
-                        <input type="number" name="sprice" id="sprice" class="add" autocomplete="off">
+                        <input type="number" name="sprice" id="sprice" class="add" autocomplete="off" required>
                         <div style="display: none;" class="pop">
                           <label>Enter Details (Item Name, Bill No, Quantity…)</label>
-                          <input type="text" name="sdetail" id="sdetail"></br>
+                          <input type="text" name="sdetail" id="sdetail" required></br>
                           <label>When did you got?</label>
-                          <input type="date" name="date" id="sdate"></br>
+                          <input type="date" name="date" id="sdate" required></br>
                           <input type="submit" id="sub" class="open" value="Add" />
                         </div>
                       </form>
